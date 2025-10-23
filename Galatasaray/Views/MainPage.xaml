@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Galatasaray.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Grid ColumnDefinitions="*,*">
+                <Button Text="Iniciar todos" Command="{Binding StartAllCommand}" />
+                <Button Text="Detener todos" Command="{Binding StopAllCommand}" />
+            </Grid>
+
+            <!-- Acelerómetro -->
+            <Frame>
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Acelerómetro" FontAttributes="Bold"/>
+                    <Label FontSize="28"
+                 Text="{Binding AccelX, StringFormat='X {0:F2} g'}"/>
+                    <Label FontSize="28"
+                 Text="{Binding AccelY, StringFormat='Y {0:F2} g'}"/>
+                    <Label FontSize="28"
+                 Text="{Binding AccelZ, StringFormat='Z {0:F2} g'}"/>
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                        <Label Text="Activo" VerticalOptions="Center"/>
+                        <Switch IsEnabled="{Binding AccelSupported}" IsToggled="{Binding AccelOn}"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Brújula -->
+            <Frame>
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Brújula" FontAttributes="Bold"/>
+                    <Label FontSize="28" Text="{Binding CompassHeading, StringFormat='{0:F0}°'}"/>
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                        <Label Text="Activo" VerticalOptions="Center"/>
+                        <Switch IsEnabled="{Binding CompassSupported}" IsToggled="{Binding CompassOn}"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Barómetro -->
+            <Frame>
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Barómetro" FontAttributes="Bold"/>
+                    <Label FontSize="28" Text="{Binding BaroHpa, StringFormat='{0:F1} hPa'}"/>
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                        <Label Text="Activo" VerticalOptions="Center"/>
+                        <Switch IsEnabled="{Binding BaroSupported}" IsToggled="{Binding BaroOn}"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Giroscopio -->
+            <Frame>
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Giroscopio" FontAttributes="Bold"/>
+                    <Label FontSize="28" Text="{Binding GyroX, StringFormat='X {0:F2} rad/s'}"/>
+                    <Label FontSize="28" Text="{Binding GyroY, StringFormat='Y {0:F2} rad/s'}"/>
+                    <Label FontSize="28" Text="{Binding GyroZ, StringFormat='Z {0:F2} rad/s'}"/>
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                        <Label Text="Activo" VerticalOptions="Center"/>
+                        <Switch IsEnabled="{Binding GyroSupported}" IsToggled="{Binding GyroOn}"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label FontSize="12" Text="{Binding StatusText}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
