@@ -24,6 +24,9 @@ namespace Galatasaray
             // Servicios (Model)
             builder.Services.AddSingleton<ISensorsService, SensorsService>();
 
+            // 1. Registrar el servicio de base de datos (Singleton = una sola instancia para toda la app)
+            builder.Services.AddSingleton<ServicioBaseDatos>();
+
             // ViewModels
             builder.Services.AddSingleton<SensorViewModel>();
 
